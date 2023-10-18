@@ -11,6 +11,28 @@ export async function passwordValidate(values){
     return errors;
 }
 
+/**validate reset password */
+export async function resetPasswordValidation(values){
+    const errors=passwordVerify({},values)
+
+    if(values.password!==values.confirm_pwd){
+        errors.exist=tost.error("Password not match....")
+    }
+    return errors;
+
+}
+
+/**validate register form */
+export async function registerValidation(values){
+    const errors=usernameVerify({},values)
+
+    passwordVerify(errors,values)
+    emailVerify(errors,values)
+
+    return(errors)
+
+}
+
 /**validate password */
 function passwordVerify(errors={},values){
 
@@ -31,6 +53,16 @@ function usernameVerify(error = {},values){
         error.username=tost.error('Username Required')
     }else if(values.username.includes(" ")){
         error.username=tost.error("Invalid Username..!")
+    }
+    return error;
+}
+
+/**Validate email */
+function emailVerify(error = {},values){
+    if(!values.email){
+        error.email=tost.error('email Required')
+    }else if(values.email.includes(" ")){
+        error.email=tost.error("Invalid email id..!")
     }
     return error;
 }
