@@ -1,0 +1,13 @@
+.gclass {
+    height: 83.33%; /* Equivalent to h-5/6 */
+    width: 83.33%; /* Equivalent to w-5/6 */
+}
+
+.profile_img {
+    width: 10rem; /* Equivalent to w-40 */
+    cursor: pointer;
+}
+
+.textbox {
+    width: 75%; /* Equivalent to w-3/4 */
+}
